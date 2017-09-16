@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { AppRegistry, Text, View } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation'
-import { LogInComponent, SignUpComponent, PatientsList, MainComponent, DashboardComponent, RegisterComponent, SearchByDateComponent, SearchByNameComponent } from './src'
+import { PatientsList, MainComponent, DashboardComponent, RegisterComponent, SearchByDateComponent, SearchByNameComponent } from './src'
 import { CardSection, Button, Card } from './src/common'
 
 export default class ptamongo extends Component {
@@ -30,8 +30,6 @@ const SimpleApp = StackNavigator({
   SearchD: { screen: SearchByDateComponent },
   SearchN: { screen: SearchByNameComponent },
   PatientsList: { screen: PatientsList },
-  LogIn: { screen: LogInComponent },
-  SignUp : { screen: SignUpComponent }
 });
 
 AppRegistry.registerComponent('ptamongo', () => SimpleApp);

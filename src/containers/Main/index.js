@@ -16,8 +16,8 @@ export class MainComponent extends Component {
                     </Text>
                 </Card>
         <CardSection>
-          <Button onPress={() => navigate('LogIn')}>
-           LogIn
+          <Button onPress={() => navigate('Dashboard')}>
+           Go To Dashboard
        </Button>
         </CardSection>
             </View>
