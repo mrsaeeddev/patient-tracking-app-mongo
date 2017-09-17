@@ -49,12 +49,12 @@ export class PatientsList extends Component {
 
                         this.state.data.map((d, i) => {
                             return (
-                                <View key={i}>
+                                <LibraryItem key={i}>
                                     <Text>{d.name}</Text>
                                     <Text>{d.email}</Text>
                                     <Text>{d.disease}</Text>
                                     <Text>{d.age}</Text>
-                                </View>
+                                </LibraryItem>
                             )
                         })
                     }
