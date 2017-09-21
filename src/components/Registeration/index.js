@@ -7,19 +7,25 @@ export class RegisterComponent extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { name: '', email: '', disease: '', age: '' }
+        this.state = { name: '', email: '', disease: '', age: '' , date:''}
         this.sendData = this.sendData.bind(this);
         this.saveData = this.saveData.bind(this);
 
     }
 
     sendData() {
-        console.log('Send')
+        let date = new Date();
+        let today = date.getDate();
+        let month = date.getMonth();
+        let year = date.getFullYear();
+        let fullDate = today + '/' + month + '/' + year;
+        console.log('date',fullDate);
         let patientData = {
             name: this.state.name,
             email: this.state.email,
             disease: this.state.disease,
-            age: this.state.age
+            age: this.state.age,
+            date: fullDate
         }
         this.saveData(patientData);
 
@@ -33,30 +39,10 @@ export class RegisterComponent extends Component {
             data: obj
         })
             .then(() => {
-                console.log('posted successfully')
-                Alert.alert(
-                    'Success',
-                    'Your data has been added successfully',
-                    [
-                        { text: 'Ask me later', onPress: () => console.log('Ask me later pressed') },
-                        { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
-                        { text: 'OK', onPress: () => console.log('OK Pressed') },
-                    ],
-                    { cancelable: false }
-                )
+                alert("Patient has been added successfully")
             })
             .catch((err) => {
-                console.log('post error')
-                Alert.alert(
-                    'Error',
-                    err,
-                    [
-                        { text: 'Ask me later', onPress: () => console.log('Ask me later pressed') },
-                        { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
-                        { text: 'OK', onPress: () => console.log('OK Pressed') },
-                    ],
-                    { cancelable: false }
-                )
+               alert(err.message)
             })
     }
     render() {
