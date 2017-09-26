@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
-import { AsyncStorage, View, Text } from 'react-native'
-import { Card, CardSection, Button, LibraryList, LibraryItem,Input } from '../.././common'
+import { AsyncStorage } from 'react-native'
+import { Container, Content, Form, Input, Button, Text,Card,CardItem,Body,ListItem,List } from 'native-base'
 import axios from 'axios'
 
 export class PatientsList extends Component {
-    static navigationOptions = {
-        header : false
-    };
     constructor(props) {
         super(props);
+        console.disableYellowBox = true;
         this.getData = this.getData.bind(this);
         this.searchByDate = this.searchByDate.bind(this);
         this.searchByName = this.searchByName.bind(this);
@@ -35,14 +33,7 @@ export class PatientsList extends Component {
             })
             .catch(err => {
                 console.log('show data err', err)
-                Alert.alert(
-                    'Error',
-                    err,
-                    [
-                        { text: 'OK', onPress: () => console.log('OK Pressed') },
-                    ],
-                    { cancelable: false }
-                )
+                alert(err)
             })
 
     }
@@ -98,42 +89,52 @@ export class PatientsList extends Component {
     render() {
         const { navigate } = this.props.navigation;
         return (
-            <View>
-            <CardSection>
+            <Container>
+                <Content>
+                    
             <Input onChangeText={(text) => this.searchByName(text)} />
-            </CardSection>
-            <CardSection>
             <Input onChangeText={(date) => this.searchByDate(date)} />
-            </CardSection>
-                <CardSection>
+    <List>
                     {this.state.normalState &&
                         this.state.data.map((d, i) => {
                             return (
-                                <View key={i}>
-                                    <Text>{d.name}</Text>
-                                    <Text>{d.email}</Text>
-                                    <Text>{d.disease}</Text>
-                                    <Text>{d.age}</Text>
-                                    <Text>{d.date}</Text>
-                                </View>
+                                <Card style={{ margin : 20, backgroundColor: '#9BDBC0' }}>
+                                    <ListItem key={i} style={{ backgroundColor: '#9BDBC0' }}>
+                                        <CardItem header style={{ backgroundColor: '#9BDBC0' }}>
+                                            <Text>{d.name}</Text>
+                                        </CardItem>
+                                        <Body>
+                                            <Text>{d.age}</Text>
+                                            <Text>{d.email}</Text>
+                                            <Text>{d.disease}</Text>
+                                            <Text>{d.date}</Text>
+                                            
+                                        </Body></ListItem>
+                                </Card>
                             )
                         })
                     }
                     {this.state.filterState &&
                         this.state.filterData.map((d, i) => {
                             return (
-                                <View key={i}>
-                                    <Text>{d.name}</Text>
-                                    <Text>{d.email}</Text>
-                                    <Text>{d.disease}</Text>
-                                    <Text>{d.age}</Text>
-                                    <Text>{d.date}</Text>
-                                </View>
-                            )
+                                <Card style={{ margin : 20, backgroundColor: '#9BDBC0' }}>
+                                    <ListItem key={i} style={{ backgroundColor: '#9BDBC0' }}>
+                                        <CardItem header style={{ backgroundColor: '#9BDBC0' }}>
+                                            <Text>{d.name}</Text>
+                                        </CardItem>
+                                        <Body>
+                                            <Text>{d.age}</Text>
+                                            <Text>{d.email}</Text>
+                                            <Text>{d.disease}</Text>
+                                            <Text>{d.date}</Text>
+                                            
+                                        </Body></ListItem>
+                                </Card>                            )
                         })
                     }
-                </CardSection>
-            </View>
+                    </List>
+                </Content>
+            </Container>
         )
     }
 }

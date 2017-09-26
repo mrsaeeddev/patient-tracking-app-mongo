@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { AppRegistry, Text, View } from 'react-native';
+import { AppRegistry } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation'
 import { PatientsList, MainComponent, DashboardComponent, RegisterComponent } from './src'
-import { CardSection, Button, Card } from './src/common'
+import { Container, Content, Button,Text } from 'native-base'
 
 export default class ptamongo extends Component {
   static navigationOptions = { // for title 
@@ -11,13 +11,13 @@ export default class ptamongo extends Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <View>
-        <CardSection>
+      <Container>
+        <Content>
           <Button onPress={() => navigate('Home')}>
-            Get Started!
+            <Text>Get Started!</Text>
        </Button>
-        </CardSection>
-      </View>
+        </Content>
+      </Container>
     );
   }
 }

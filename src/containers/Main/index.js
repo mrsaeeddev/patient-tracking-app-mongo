@@ -1,30 +1,28 @@
 import React, { Component } from 'react'
-import { View, Text, StatusBar } from 'react-native'
-import { Card, CardSection, Button } from '../.././common'
+import { StatusBar } from 'react-native'
+import { Container, Content, Text, Button } from 'native-base'
 
 export class MainComponent extends Component {
     render() {
     const { navigate } = this.props.navigation;
         return (
-            <View>
+            <Container>
                  <StatusBar barStyle="light-content" hidden />
-                <Card>
+                <Content>
                     <Text>This is the application which enables Doctors and other medical related
                         practictioners to keep track record of their patients so that their patients remain
                         healthy and documented.Doctors can record their patients and also view the history 
                         of their patients day-by-day.
                     </Text>
-                </Card>
-        <CardSection>
+                </Content>
           <Button onPress={() => navigate('Dashboard')}>
-           Go To Dashboard
+           <Text>Go To Dashboard</Text>
        </Button>
-        </CardSection>
-            </View>
+            </Container>
         )
     }
 } 
 
 MainComponent.navigationOptions = {
-    title: 'Introduction'
+    title: 'Introduction' 
 }

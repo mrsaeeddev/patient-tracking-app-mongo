@@ -1,40 +1,29 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
-import { Card, CardSection, Button } from '../.././common'
+import {  StyleSheet, Image } from 'react-native'
+import { Container,Content,Button,Text } from 'native-base'
 // import ResponsiveImage from 'react-native-responsive-image'
 
 export class DashboardComponent extends Component {
     render() {
         const { navigate } = this.props.navigation;
         return (
-            <View>
-               
-                <CardSection>
-                    <Text>Dashboard</Text>
-                </CardSection>
-                <View>
-                    <View >
-                        <CardSection>
+            <Container>               
+                
+                    <Content >
+                        
                             <Button onPress={() => navigate('Reg')}>
-                                Register
+                               <Text> Register</Text>
                             </Button>
-                        </CardSection>
-                      
-                        <CardSection>
+                        
                             <Button onPress={() => navigate('PatientsList')}>
-                                Patient List
-                        {/* <Image source={require('./icon3.png')} style={styles.img} /> */}
-                            </Button>
-                        </CardSection>
-                        <CardSection>
+                                <Text>Patient List</Text>
+                                                    </Button>
                             <Button onPress={() => alert("You have signed out successfully")}>
-                                Sign Out
-                        {/* <Image source={require('./icon3.png')} style={styles.img} /> */}
-                            </Button>
-                        </CardSection>
-                    </View>
-                </View>
-            </View>
+                                <Text>Sign Out</Text>
+                                                    </Button>
+                    
+                </Content>
+            </Container>
         )
     }
 }

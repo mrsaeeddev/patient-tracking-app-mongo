@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import { View, Text, AsyncStorage } from 'react-native'
-import { CardSection, Button, Input } from '../.././common'
+import { AsyncStorage } from 'react-native'
+import { Container, Content, Label, Form, Item, Text, Button,Input } from 'native-base';
 import axios from 'axios'
 
 export class RegisterComponent extends Component {
 
     constructor(props) {
         super(props);
+        console.disableYellowBox = true;
         this.state = { name: '', email: '', disease: '', age: '' , date:''}
         this.sendData = this.sendData.bind(this);
         this.saveData = this.saveData.bind(this);
@@ -33,6 +34,7 @@ export class RegisterComponent extends Component {
 
     async saveData(obj) {
         console.log('Save',obj)
+        if(this.state.name && this.state.email && this.state.disease && this.state.age !== ''){
         axios({
             method: 'post',
             url: 'https://pta-mern-stack.herokuapp.com/api/addName',
@@ -43,41 +45,39 @@ export class RegisterComponent extends Component {
             })
             .catch((err) => {
                alert(err.message)
-            })
+            })}
+            else{
+                alert("Please fill empty fields")
+            }
     }
     render() {
         const { navigate } = this.props.navigation;
-        return (<View>
-            <CardSection><Input
+        return (<Container>
+            <Form>
+            <Item floatingLabel>
+                <Label>Enter patient's name</Label><Input
                 onChangeText={(name) => { this.setState({ name }) }}
-                placeholder="Enter patient's name"
-                label="Name"
                 value={this.state.name}
-            /></CardSection>
-            <CardSection><Input
-                placeholder="Enter patient's Email"
+            /></Item>
+            <Item floatingLabel>
+                <Label>Enter patient's email</Label><Input
                 onChangeText={(email) => { this.setState({ email }) }}
-                label="Email"
                 value={this.state.email}
-            /></CardSection>
-            <CardSection><Input
-                placeholder="Enter patient's disease"
+            /></Item>
+            <Item floatingLabel><Label>Enter patient's disease</Label><Input
                 onChangeText={(disease) => { this.setState({ disease }) }}
-                label="Disease"
                 value={this.state.disease}
-            /></CardSection>
-            <CardSection><Input
-                placeholder="Enter patient's age"
+            /></Item>
+            <Item floatingLabel>
+                <Label>Enter patient's age</Label><Input
                 onChangeText={(age) => { this.setState({ age }) }}
                 value={this.state.age}
-                label="Age"
-            /></CardSection>
-            <CardSection>
+            /></Item>
                 <Button onPress={this.sendData}>
-                    Submit
+                    <Text>Submit</Text>
        </Button>
-            </CardSection>
-        </View>
+       </Form>
+        </Container>
         )
     }
 }
