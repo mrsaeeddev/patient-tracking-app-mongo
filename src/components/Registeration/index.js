@@ -73,7 +73,7 @@ export class RegisterComponent extends Component {
                 onChangeText={(age) => { this.setState({ age }) }}
                 value={this.state.age}
             /></Item>
-                <Button onPress={this.sendData}>
+                <Button style={{marginLeft:140}} onPress={this.sendData}>
                     <Text>Submit</Text>
        </Button>
        </Form>

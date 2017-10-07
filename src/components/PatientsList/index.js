@@ -92,8 +92,8 @@ export class PatientsList extends Component {
             <Container>
                 <Content>
                     
-            <Input onChangeText={(text) => this.searchByName(text)} />
-            <Input onChangeText={(date) => this.searchByDate(date)} />
+            <Input onChangeText={(text) => this.searchByName(text)} placeholder="Search By Name"/>
+            <Input onChangeText={(date) => this.searchByDate(date)} placeholder="Search By Date"/>
     <List>
                     {this.state.normalState &&
                         this.state.data.map((d, i) => {

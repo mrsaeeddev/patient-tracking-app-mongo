@@ -5,6 +5,5 @@ import { RegisterComponent,PatientsList } from './components/'
 export {
     DashboardComponent,
     PatientsList,
-    MainComponent,
     RegisterComponent
 }

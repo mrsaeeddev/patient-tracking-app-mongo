@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import {  StyleSheet, Image } from 'react-native'
-import { Container,Content,Button,Text } from 'native-base'
+import {  StyleSheet, Image,TouchableOpacity,BackHandler } from 'react-native'
+import { Container,Content,Button,Text,Thumbnail } from 'native-base'
 // import ResponsiveImage from 'react-native-responsive-image'
 
 export class DashboardComponent extends Component {
@@ -10,17 +10,19 @@ export class DashboardComponent extends Component {
             <Container>               
                 
                     <Content >
+                        <TouchableOpacity style={{backgroundColor:'green'}} onPress={() => {navigate('Reg')}}>
+                            <Thumbnail style={{ width:120,height:120, marginLeft:120}} source={require('./img2.png')} />
+                               <Text style={{ marginLeft:140}}> Register</Text>
+                    </TouchableOpacity>
                         
-                            <Button onPress={() => navigate('Reg')}>
-                               <Text> Register</Text>
-                            </Button>
-                        
-                            <Button onPress={() => navigate('PatientsList')}>
-                                <Text>Patient List</Text>
-                                                    </Button>
-                            <Button onPress={() => alert("You have signed out successfully")}>
-                                <Text>Sign Out</Text>
-                                                    </Button>
+                            <TouchableOpacity style={{backgroundColor:'blue'}} onPress={() => navigate('PatientsList')}>
+                            <Thumbnail style={{ width:120,height:120, marginLeft:120}} source={require('./img1.png')} />
+                                <Text style={{ marginLeft:135}}>Patient List</Text>
+                                                </TouchableOpacity>
+                            <TouchableOpacity style={{backgroundColor:'red'}} onPress={() => BackHandler.exitApp()}>
+                            <Thumbnail style={{ width:120,height:120, marginLeft:120}} source={require('./img3.png')} />
+                                <Text style={{ marginLeft:163}}>Exit</Text>
+                                                    </TouchableOpacity>
                     
                 </Content>
             </Container>
